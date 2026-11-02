@@ -5,7 +5,7 @@ import SearchBox from './components/SearchBox.jsx';
 import TicketList from './components/TicketList.jsx';
 import { filterTickets, nextId, sortByPriority } from './data.js';
 
-export default function App({ initialTickets }) {
+export default function App({ initialTickets = [] }) {
   const [tickets, setTickets] = useState(initialTickets);
   const [query, setQuery] = useState('');
 
@@ -27,8 +27,4 @@ export default function App({ initialTickets }) {
 
 App.propTypes = {
   initialTickets: PropTypes.arrayOf(PropTypes.object),
-};
-
-App.defaultProps = {
-  initialTickets: [],
 };

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import StatusBadge from './StatusBadge.jsx';
 
-export default function TicketRow({ id, title, priority, status, assignee }) {
+export default function TicketRow({ id, title, priority = 'normal', status, assignee = 'Unassigned' }) {
   return (
     <li className={`ticket priority-${priority}`} data-testid={`ticket-${id}`}>
       <span className="ticket-id">#{id}</span>
@@ -19,9 +19,4 @@ TicketRow.propTypes = {
   priority: PropTypes.oneOf(['urgent', 'high', 'normal', 'low']),
   status: PropTypes.oneOf(['open', 'pending', 'closed']),
   assignee: PropTypes.string,
-};
-
-TicketRow.defaultProps = {
-  priority: 'normal',
-  assignee: 'Unassigned',
 };
