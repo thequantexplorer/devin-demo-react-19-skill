@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import StatusBadge from './StatusBadge.jsx';
 
 export default function TicketRow({ id, title, priority = 'normal', status, assignee = 'Unassigned' }) {
@@ -12,11 +11,3 @@ export default function TicketRow({ id, title, priority = 'normal', status, assi
     </li>
   );
 }
-
-TicketRow.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  priority: PropTypes.oneOf(['urgent', 'high', 'normal', 'low']),
-  status: PropTypes.oneOf(['open', 'pending', 'closed']),
-  assignee: PropTypes.string,
-};

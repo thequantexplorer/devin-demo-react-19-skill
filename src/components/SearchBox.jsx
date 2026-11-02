@@ -1,5 +1,4 @@
 import { Component, createRef } from 'react';
-import PropTypes from 'prop-types';
 
 export default class SearchBox extends Component {
   inputRef = createRef();
@@ -27,11 +26,6 @@ export default class SearchBox extends Component {
     );
   }
 }
-
-SearchBox.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-};
 
 SearchBox.defaultProps = {
   placeholder: 'Search by title or #id',

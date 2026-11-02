@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 import NewTicketForm from './components/NewTicketForm.jsx';
 import SearchBox from './components/SearchBox.jsx';
 import TicketList from './components/TicketList.jsx';
@@ -24,7 +23,3 @@ export default function App({ initialTickets = [] }) {
     </main>
   );
 }
-
-App.propTypes = {
-  initialTickets: PropTypes.arrayOf(PropTypes.object),
-};

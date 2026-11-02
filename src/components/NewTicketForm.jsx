@@ -1,5 +1,4 @@
 import { Component, createRef } from 'react';
-import PropTypes from 'prop-types';
 import { PRIORITIES } from '../data.js';
 
 export default class NewTicketForm extends Component {
@@ -41,7 +40,3 @@ export default class NewTicketForm extends Component {
     );
   }
 }
-
-NewTicketForm.propTypes = {
-  onCreate: PropTypes.func.isRequired,
-};

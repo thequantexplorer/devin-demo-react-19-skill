@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import TicketRow from './TicketRow.jsx';
 
 export default function TicketList({ tickets, emptyMessage = 'No tickets match your search.' }) {
@@ -11,8 +10,3 @@ export default function TicketList({ tickets, emptyMessage = 'No tickets match y
     </ul>
   );
 }
-
-TicketList.propTypes = {
-  tickets: PropTypes.arrayOf(PropTypes.object).isRequired,
-  emptyMessage: PropTypes.string,
-};
