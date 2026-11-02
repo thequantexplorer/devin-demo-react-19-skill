@@ -1,15 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import { seedTickets } from './data.js';
 
+const roots = new WeakMap();
+
 export function mount(container, tickets = seedTickets) {
-  ReactDOM.render(<App initialTickets={tickets} />, container);
+  let root = roots.get(container);
+  if (!root) {
+    root = createRoot(container);
+    roots.set(container, root);
+  }
+  root.render(<App initialTickets={tickets} />);
 }
 
 export function unmount(container) {
-  return ReactDOM.unmountComponentAtNode(container);
+  const root = roots.get(container);
+  if (!root) return false;
+  root.unmount();
+  roots.delete(container);
+  return true;
 }
 
-const root = document.getElementById('root');
-if (root) mount(root);
+const rootElement = document.getElementById('root');
+if (rootElement) mount(rootElement);
