@@ -1,18 +1,19 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+import { Component, createRef } from 'react';
 
 export default class SearchBox extends Component {
+  inputRef = createRef();
+
   handleClear = () => {
-    this.refs.input.value = '';
+    this.inputRef.current.value = '';
     this.props.onChange('');
-    this.refs.input.focus();
+    this.inputRef.current.focus();
   };
 
   render() {
     return (
       <div className="search">
         <input
-          ref="input"
+          ref={this.inputRef}
           type="search"
           aria-label="Search tickets"
           placeholder={this.props.placeholder}
@@ -25,11 +26,6 @@ export default class SearchBox extends Component {
     );
   }
 }
-
-SearchBox.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-};
 
 SearchBox.defaultProps = {
   placeholder: 'Search by title or #id',

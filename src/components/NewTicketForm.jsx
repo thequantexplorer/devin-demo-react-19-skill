@@ -1,19 +1,21 @@
-import { Component } from 'react';
-import PropTypes from 'prop-types';
+import { Component, createRef } from 'react';
 import { PRIORITIES } from '../data.js';
 
 export default class NewTicketForm extends Component {
+  titleRef = createRef();
+  priorityRef = createRef();
+
   componentDidMount() {
-    this.refs.title.focus();
+    this.titleRef.current.focus();
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const title = this.refs.title.value.trim();
+    const title = this.titleRef.current.value.trim();
     if (!title) return;
-    this.props.onCreate({ title, priority: this.refs.priority.value });
-    this.refs.title.value = '';
-    this.refs.title.focus();
+    this.props.onCreate({ title, priority: this.priorityRef.current.value });
+    this.titleRef.current.value = '';
+    this.titleRef.current.focus();
   };
 
   render() {
@@ -21,11 +23,11 @@ export default class NewTicketForm extends Component {
       <form onSubmit={this.handleSubmit} aria-label="New ticket">
         <label>
           Title
-          <input ref="title" name="title" />
+          <input ref={this.titleRef} name="title" />
         </label>
         <label>
           Priority
-          <select ref="priority" name="priority" defaultValue="normal">
+          <select ref={this.priorityRef} name="priority" defaultValue="normal">
             {PRIORITIES.map((p) => (
               <option key={p} value={p}>
                 {p}
@@ -38,7 +40,3 @@ export default class NewTicketForm extends Component {
     );
   }
 }
-
-NewTicketForm.propTypes = {
-  onCreate: PropTypes.func.isRequired,
-};

@@ -4,19 +4,12 @@ The support team's ticket queue: create tickets, search them, and see the urgent
 
 ```sh
 npm install
-npm test               # tests on the React version in package.json (18.3)
+npm test               # tests on the React version in package.json (19.2)
 npm run test:react19   # the same tests on React 19, in a throwaway copy
 npm run build
 ```
 
-The app still uses APIs that React 19 removed:
-
-- `ReactDOM.render` and `ReactDOM.unmountComponentAtNode` in `src/main.jsx`
-- string refs (`ref="title"`, `this.refs`) in `src/components/NewTicketForm.jsx` and `src/components/SearchBox.jsx`
-- `defaultProps` on function components in `src/App.jsx` and `src/components/`
-- `propTypes`, which React 19 no longer checks
-
-`npm test` passes but prints React 18.3 deprecation warnings. `npm run test:react19` fails 12 of 15 tests.
+The app runs on React 19. The steps used to upgrade it from React 18.3 are in [.agents/skills/react-19-upgrade/SKILL.md](.agents/skills/react-19-upgrade/SKILL.md).
 
 ---
 
